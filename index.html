@@ -3,41 +3,40 @@
 <head>
     <title>Vril Couture</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta charset="UTF-8">
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CPoppins:400,500" rel="stylesheet">
-    
     <link href="common-css/ionicons.css" rel="stylesheet">
     <link rel="stylesheet" href="common-css/jquery.classycountdown.css" />
     <link href="03-comming-soon/css/styles.css" rel="stylesheet">
     <link href="03-comming-soon/css/responsive.css" rel="stylesheet">
 
     <style>
-        /* 1. Prevent scrolling and fix the container height */
         html, body {
+            /* Fix for iOS scroll bounce and height */
             height: 100%;
             margin: 0;
             overflow: hidden; 
+            background-color: #000;
         }
 
         .main-area {
+            /* Uses Dynamic Viewport Height to stay above the iPhone bottom bar */
             height: 100vh !important;
+            height: 100dvh !important; 
             position: relative;
             background-position: center !important;
             background-size: cover !important;
             display: flex !important;
             flex-direction: column !important;
-            justify-content: center !important;
+            justify-content: space-between !important;
             align-items: center !important;
+            box-sizing: border-box;
         }
 
-        /* 2. Logo positioning */
         .logo-wrapper {
-            position: absolute;
-            top: 40px; 
-            left: 0;
-            right: 0;
+            padding-top: 40px;
             width: 100%;
             text-align: center;
             z-index: 999;
@@ -53,57 +52,40 @@
             fill: #FFFFFF !important;
         }
 
-        /* 3. Adjusting the template's table behavior to be flexible */
+        /* Centered content block */
         .display-table {
+            flex-grow: 1;
             display: flex !important;
             flex-direction: column !important;
             justify-content: center !important;
-            height: 100% !important;
             width: 100%;
-            padding-top: 60px; /* Space for absolute logo */
         }
 
         .display-table-cell {
             display: block !important;
-            vertical-align: middle !important;
+            padding: 0 20px;
         }
 
-        /* 4. Reducing spacing to pull links up */
-        .title {
-            margin-bottom: 10px !important;
-        }
+        .title { margin-bottom: 10px !important; }
+        .desc { margin-bottom: 25px !important; }
 
-        .desc {
-            margin-bottom: 20px !important;
-        }
-
-        /* 5. Fix links at bottom with safe area */
+        /* Social links container */
         .social-btn {
-            margin-top: 25px !important; /* Reduced gap between button and links */
-            padding-bottom: 30px !important; /* Forces links above the fold/gesture bar */
+            margin: 0 !important;
+            /* env(safe-area-inset-bottom) ensures links sit above the iPhone home bar */
+            padding-bottom: calc(20px + env(safe-area-inset-bottom)) !important;
             width: 100%;
-            text-align: center;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
-        /* Mobile specific adjustments for S20 FE / Modern Phones */
         @media (max-width: 768px) {
-            .logo-svg {
-                width: 180px;
-            }
-            .logo-wrapper {
-                top: 36px;
-            }
-            .title {
-                font-size: 4.2em !important;
-            }
-            .desc {
-                font-size: 1,2em !important;
-                padding: 0 16px 14px 16px;
-            }
-            .social-btn {
-                margin-top: 20px !important;
-                padding-bottom: 40px !important; /* Extra space for mobile navigation bars */
-            }
+            .logo-svg { width: 160px; }
+            .logo-wrapper { padding-top: 30px; }
+            .title { font-size: 4.2em !important; }
+            .desc { font-size: 1.1em !important; }
         }
     </style>
 </head>
@@ -113,39 +95,36 @@
         
         <div class="logo-wrapper">
             <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 405.97 50.57">
-                <g id="b">
-                    <g id="c">
-                        <path d="M39.28,2.03c-2.5,0-4.33,1.62-5,3.31l-8.39,21.72c-1.26,3.27-5.89,3.27-7.15,0L10.48,5.68c-.8-2.07-2.53-3.62-5.18-3.65-1.78-.02-3.4,.88-4.37,2.36C-.46,6.49-.05,8.08,.61,9.67L15.96,46.38c1.08,2.57,3.04,4.12,5.88,4.12h.68c2.84,0,4.8-1.56,5.88-4.12L43.88,9.33c.27-.61,.54-1.49,.54-2.3,0-2.84-2.3-5-5.14-5Z"/>
-                        <path d="M66.53,13.12c-3.04,0-5.48,3.25-6.96,6.76v-1.62c0-2.84-2.3-5.14-5.14-5.14s-5.14,2.3-5.14,5.14v26.77c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14v-9.6c0-7.3,2.91-11.29,8.11-12.51,2.1-.47,3.85-2.1,3.85-4.8,0-2.91-1.83-5-5-5Z"/>
-                        <path d="M83.17,13.12c-2.84,0-5.14,2.3-5.14,5.14v26.77c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14V18.26c0-2.84-2.3-5.14-5.14-5.14Z"/>
-                        <path d="M103.59,0c-2.84,0-5.14,2.3-5.14,5.14V45.03c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14V5.14c0-2.84-2.3-5.14-5.14-5.14Z"/>
-                        <path d="M175.67,36.1c-1.22,0-2.3,.47-3.11,1.15-2.98,2.37-5.88,3.72-10.28,3.72-8.11,0-13.73-6.76-13.73-14.88v-.13c0-8.11,5.75-14.74,13.73-14.74,3.72,0,6.76,1.22,9.67,3.38,.74,.47,1.69,1.01,3.11,1.01,2.84,0,5.14-2.23,5.14-5.07,0-1.83-.95-3.31-2.03-4.12-3.92-2.91-8.72-4.8-15.82-4.8-14.54,0-24.68,11.02-24.68,24.48v.13c0,13.59,10.35,24.34,24.27,24.34,7.57,0,12.58-2.23,16.83-5.95,.95-.81,1.76-2.1,1.76-3.72,0-2.64-2.23-4.8-4.87-4.8Z"/>
-                        <path d="M205.83,12.85c-11.29,0-19.67,8.45-19.67,18.86v.14c0,10.41,8.32,18.73,19.54,18.73s19.67-8.45,19.67-18.86v-.13c0-10.41-8.32-18.73-19.54-18.73Zm9.4,19c0,5.34-3.52,9.87-9.4,9.87s-9.53-4.67-9.53-10.01v-.13c0-5.34,3.52-9.87,9.4-9.87s9.53,4.67,9.53,10.01v.14Z"/>
-                        <path d="M260.6,13.12c-2.84,0-5.14,2.3-5.14,5.14v15.48c0,4.87-2.5,7.37-6.42,7.37s-6.22-2.5-6.22-7.37v-15.48c0-2.84-2.3-5.14-5.14-5.14s-5.14,2.3-5.14,5.14v18.73c0,8.32,4.53,13.45,12.31,13.45,5.21,0,8.25-2.77,10.61-5.81v.41c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14V18.26c0-2.84-2.3-5.14-5.14-5.14Z"/>
-                        <path d="M330.78,13.12c-2.84,0-5.14,2.3-5.14,5.14v15.48c0,4.87-2.5,7.37-6.42,7.37s-6.22-2.5-6.22-7.37v-15.48c0-2.84-2.3-5.14-5.14-5.14s-5.14,2.3-5.14,5.14v18.73c0,8.32,4.53,13.45,12.31,13.45,5.21,0,8.25-2.77,10.61-5.81v.41c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14V18.26c0-2.84-2.3-5.14-5.14-5.14Z"/>
-                        <path d="M362.36,13.12c-3.04,0-5.48,3.25-6.96,6.76v-1.62c0-2.84-2.3-5.14-5.14-5.14s-5.14,2.3-5.14,5.14v26.77c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14v-9.6c0-7.3,2.91-11.29,8.11-12.51,2.1-.47,3.85-2.1,3.85-4.8,0-2.91-1.83-5-5-5Z"/>
-                        <path d="M405.97,30.29c0-7.5-5.34-17.44-17.44-17.44-10.55,0-17.92,8.52-17.92,18.86v.14c0,11.09,8.05,18.73,18.93,18.73,5.27,0,9.4-1.69,12.58-4.39,.74-.68,1.35-1.69,1.35-3.04,0-2.3-1.69-4.06-3.99-4.06-1.08,0-1.76,.27-2.5,.81-2.1,1.55-4.46,2.43-7.3,2.43-4.6,0-7.84-2.43-8.86-7.1h20.35c2.7,0,4.8-1.96,4.8-4.94Zm-25.29-1.49c.81-4.67,3.58-7.71,7.84-7.71s7.03,3.11,7.64,7.71h-15.48Z"/>
-                        <path d="M293.56,13.55c-.39-.12-.81-.18-1.24-.18h-3.43v-5.23c0-2.84-2.3-5.14-5.14-5.14s-5.14,2.3-5.14,5.14v5.23h-3.43c-2.44,0-4.4,1.96-4.4,4.39,0,2,1.33,3.69,3.16,4.22,.39,.12,.81,.18,1.24,.18h3.43v22.87c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14V22.16h3.43c2.44,0,4.4-1.96,4.4-4.39,0-2-1.33-3.69-3.16-4.22Z"/>
-                        <path d="M83.17,.07h0c-2.84,0-5.14,2.3-5.14,5.14s2.3,5.14,5.14,5.14h0c2.84,0,5.14-2.3,5.14-5.14S86.01,.07,83.17,.07Z"/>
-                    </g>
-                </g>
+                <g id="b"><g id="c">
+                    <path d="M39.28,2.03c-2.5,0-4.33,1.62-5,3.31l-8.39,21.72c-1.26,3.27-5.89,3.27-7.15,0L10.48,5.68c-.8-2.07-2.53-3.62-5.18-3.65-1.78-.02-3.4,.88-4.37,2.36C-.46,6.49-.05,8.08,.61,9.67L15.96,46.38c1.08,2.57,3.04,4.12,5.88,4.12h.68c2.84,0,4.8-1.56,5.88-4.12L43.88,9.33c.27-.61,.54-1.49,.54-2.3,0-2.84-2.3-5-5.14-5Z"/>
+                    <path d="M66.53,13.12c-3.04,0-5.48,3.25-6.96,6.76v-1.62c0-2.84-2.3-5.14-5.14-5.14s-5.14,2.3-5.14,5.14v26.77c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14v-9.6c0-7.3,2.91-11.29,8.11-12.51,2.1-.47,3.85-2.1,3.85-4.8,0-2.91-1.83-5-5-5Z"/>
+                    <path d="M83.17,13.12c-2.84,0-5.14,2.3-5.14,5.14v26.77c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14V18.26c0-2.84-2.3-5.14-5.14-5.14Z"/>
+                    <path d="M103.59,0c-2.84,0-5.14,2.3-5.14,5.14V45.03c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14V5.14c0-2.84-2.3-5.14-5.14-5.14Z"/>
+                    <path d="M175.67,36.1c-1.22,0-2.3,.47-3.11,1.15-2.98,2.37-5.88,3.72-10.28,3.72-8.11,0-13.73-6.76-13.73-14.88v-.13c0-8.11,5.75-14.74,13.73-14.74,3.72,0,6.76,1.22,9.67,3.38,.74,.47,1.69,1.01,3.11,1.01,2.84,0,5.14-2.23,5.14-5.07,0-1.83-.95-3.31-2.03-4.12-3.92-2.91-8.72-4.8-15.82-4.8-14.54,0-24.68,11.02-24.68,24.48v.13c0,13.59,10.35,24.34,24.27,24.34,7.57,0,12.58-2.23,16.83-5.95,.95-.81,1.76-2.1,1.76-3.72,0-2.64-2.23-4.8-4.87-4.8Z"/>
+                    <path d="M205.83,12.85c-11.29,0-19.67,8.45-19.67,18.86v.14c0,10.41,8.32,18.73,19.54,18.73s19.67-8.45,19.67-18.86v-.13c0-10.41-8.32-18.73-19.54-18.73Zm9.4,19c0,5.34-3.52,9.87-9.4,9.87s-9.53-4.67-9.53-10.01v-.13c0-5.34,3.52-9.87,9.4-9.87s9.53,4.67,9.53,10.01v.14Z"/>
+                    <path d="M260.6,13.12c-2.84,0-5.14,2.3-5.14,5.14v15.48c0,4.87-2.5,7.37-6.42,7.37s-6.22-2.5-6.22-7.37v-15.48c0-2.84-2.3-5.14-5.14-5.14s-5.14,2.3-5.14,5.14v18.73c0,8.32,4.53,13.45,12.31,13.45,5.21,0,8.25-2.77,10.61-5.81v.41c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14V18.26c0-2.84-2.3-5.14-5.14-5.14Z"/>
+                    <path d="M330.78,13.12c-2.84,0-5.14,2.3-5.14,5.14v15.48c0,4.87-2.5,7.37-6.42,7.37s-6.22-2.5-6.22-7.37v-15.48c0-2.84-2.3-5.14-5.14-5.14s-5.14,2.3-5.14,5.14v18.73c0,8.32,4.53,13.45,12.31,13.45,5.21,0,8.25-2.77,10.61-5.81v.41c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14V18.26c0-2.84-2.3-5.14-5.14-5.14Z"/>
+                    <path d="M362.36,13.12c-3.04,0-5.48,3.25-6.96,6.76v-1.62c0-2.84-2.3-5.14-5.14-5.14s-5.14,2.3-5.14,5.14v26.77c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14v-9.6c0-7.3,2.91-11.29,8.11-12.51,2.1-.47,3.85-2.1,3.85-4.8,0-2.91-1.83-5-5-5Z"/>
+                    <path d="M405.97,30.29c0-7.5-5.34-17.44-17.44-17.44-10.55,0-17.92,8.52-17.92,18.86v.14c0,11.09,8.05,18.73,18.93,18.73,5.27,0,9.4-1.69,12.58-4.39,.74-.68,1.35-1.69,1.35-3.04,0-2.3-1.69-4.06-3.99-4.06-1.08,0-1.76,.27-2.5,.81-2.1,1.55-4.46,2.43-7.3,2.43-4.6,0-7.84-2.43-8.86-7.1h20.35c2.7,0,4.8-1.96,4.8-4.94Zm-25.29-1.49c.81-4.67,3.58-7.71,7.84-7.71s7.03,3.11,7.64,7.71h-15.48Z"/>
+                    <path d="M293.56,13.55c-.39-.12-.81-.18-1.24-.18h-3.43v-5.23c0-2.84-2.3-5.14-5.14-5.14s-5.14,2.3-5.14,5.14v5.23h-3.43c-2.44,0-4.4,1.96-4.4,4.39,0,2,1.33,3.69,3.16,4.22,.39,.12,.81,.18,1.24,.18h3.43v22.87c0,2.84,2.3,5.14,5.14,5.14s5.14-2.3,5.14-5.14V22.16h3.43c2.44,0,4.4-1.96,4.4-4.39,0-2-1.33-3.69-3.16-4.22Z"/>
+                    <path d="M83.17,.07h0c-2.84,0-5.14,2.3-5.14,5.14s2.3,5.14,5.14,5.14h0c2.84,0,5.14-2.3,5.14-5.14S86.01,.07,83.17,.07Z"/>
+                </g></g>
             </svg>
         </div>
         
         <div class="display-table">
             <div class="display-table-cell">
-                
                 <h1 class="title font-white"><b>Coming Soon!</b></h1>
                 <p class="desc font-white">We are busy cooking something exciting and we can't wait to share it with you.</p>
-                
                 <a class="notify-btn" href="https://tally.so/r/eqRZ5Q">NOTIFY ME</a>
-                
-                <ul class="social-btn font-white">
-                    <li><a href="https://www.instagram.com/vril_couture/">instagram</a></li>
-                    <li><a href="https://www.tiktok.com/@vril.couture">tiktok</a></li>
-                </ul>
             </div>
         </div>
+
+        <ul class="social-btn font-white">
+            <li><a href="https://www.instagram.com/vril_couture/">instagram</a></li>
+            <li><a href="https://www.tiktok.com/@vril.couture">tiktok</a></li>
+        </ul>
+
     </div>
 </body>
 </html>
