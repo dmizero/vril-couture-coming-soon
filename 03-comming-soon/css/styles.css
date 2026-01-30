@@ -28,7 +28,7 @@ a b.light-color:hover{ text-decoration: none; color: #ffffff53; }
 
 b{ font-weight: 600; }
 
-img{ width: 100%; }
+img{ width: 100%; background-position: center center; }
 
 li{ list-style: none; display: inline-block; }
 
